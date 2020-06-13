@@ -1,0 +1,31 @@
+{
+  "itemGroup.electroarmor.item_group": "Electro Armor",
+
+  "item.electroarmor.iron_plate": "Iron Plate",
+  "item.electroarmor.circuit": "Circuit",
+  "item.electroarmor.base_module": "Base Module",
+  "item.electroarmor.hammer": "Hammer",
+
+  "item.electroarmor.electronic_helmet": "Electronic Helmet",
+  "item.electroarmor.electronic_chestplate": "Electronic Chestplate",
+  "item.electroarmor.electronic_leggings": "Electronic Leggings",
+  "item.electroarmor.electronic_boots": "Electronic Boots",
+
+  "item.electroarmor.solar_generator_module_tier_1": "Solar Generator Module T1",
+  "item.electroarmor.solar_generator_module_tier_2": "Solar Generator Module T2",
+  "item.electroarmor.solar_generator_module_tier_3": "Solar Generator Module T3",
+  "item.electroarmor.lunar_generator_module_tier_1": "Lunar Generator Module T1",
+  "item.electroarmor.lunar_generator_module_tier_2": "Lunar Generator Module T2",
+  "item.electroarmor.lunar_generator_module_tier_3": "Lunar Generator Module T3",
+  "item.electroarmor.burnable_generator_module": "Burnable Generator Module",
+  "item.electroarmor.solunar_generator_module": "Solunar Generator Module",
+  "item.electroarmor.attacker_module_tier_1": "Attacker Module T1",
+  "item.electroarmor.attacker_module_tier_2": "Attacker Module T2",
+  "item.electroarmor.attacker_module_tier_3": "Attacker Module T3",
+  "item.electroarmor.mining_module_tier_1": "Mining Module T1",
+  "item.electroarmor.mining_module_tier_2": "Mining Module T2",
+  "item.electroarmor.feeding_module": "Feeding Module",
+  "item.electroarmor.speed_module": "Speed Module",
+
+  "text.autoconfig.electroarmor.title": "Electro Armor Config"
+}

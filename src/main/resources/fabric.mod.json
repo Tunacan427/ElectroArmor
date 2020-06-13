@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "electroarmor",
+  "version": "${version}",
+  "name": "Electro Armor",
+  "description": "adds some funky upgradeable armor",
+  "authors": [
+    "TunacanGamer"
+  ],
+  "license": "MIT",
+  "icon": "assets/electroarmor/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.tunacan427.electroarmor.ElectroArmor"
+    ],
+    "client": [
+      "io.github.tunacan427.electroarmor.client.ElectroArmorClient"
+    ],
+    "modmenu": [
+      "io.github.tunacan427.electroarmor.integration.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "electroarmor.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.8.7+build.201",
+    "fabric": "*",
+    "minecraft": "1.16-rc.4"
+  }
+}
