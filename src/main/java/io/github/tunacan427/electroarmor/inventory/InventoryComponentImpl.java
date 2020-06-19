@@ -1,20 +1,14 @@
 package io.github.tunacan427.electroarmor.inventory;
 
-import io.github.tunacan427.electroarmor.item.module.ModuleItem;
-import jdk.nashorn.internal.ir.Module;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Nameable;
-import net.minecraft.util.Tickable;
 import net.minecraft.util.collection.DefaultedList;
 
-public class InventoryComponentImpl implements ImplementedInventory, InventoryComponent, Nameable {
+public class InventoryComponentImpl implements ImplementedInventory, InventoryComponent {
     private DefaultedList<ItemStack> items = DefaultedList.ofSize(8, ItemStack.EMPTY);
 
     @Override
@@ -37,8 +31,20 @@ public class InventoryComponentImpl implements ImplementedInventory, InventoryCo
         return Inventories.toTag(tag, items);
     }
 
-    @Override
-    public Text getName() {
-        return new TranslatableText("container.electroarmor.armorInventory");
+    public void vanishCursedItems() {
+        items.forEach(itemStack -> {
+            if (!itemStack.isEmpty() && EnchantmentHelper.hasVanishingCurse(itemStack)) {
+                items.set(items.indexOf(itemStack), ItemStack.EMPTY);
+            }
+        });
+    }
+
+    public void dropAll(PlayerEntity player) {
+        items.forEach(itemStack -> {
+            if (!itemStack.isEmpty()) {
+                player.dropItem(itemStack, true, false);
+                items.set(items.indexOf(itemStack), ItemStack.EMPTY);
+            }
+        });
     }
 }

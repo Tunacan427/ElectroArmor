@@ -1,8 +1,10 @@
 package io.github.tunacan427.electroarmor.energy;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.math.MathHelper;
 
 public class EnergyComponentImpl implements EnergyComponent {
+    public static final int MAX_ENERGY = 10000;
     private int value = 0;
 
     @Override
@@ -11,18 +13,22 @@ public class EnergyComponentImpl implements EnergyComponent {
     }
 
     @Override
-    public int setValue(int value) {
-        return this.value = value;
+    public void setValue(int value) {
+        this.value = MathHelper.clamp(value, 0, MAX_ENERGY);
     }
 
     @Override
-    public int incrementValue(int amount) {
-        return this.value += amount;
+    public void incrementValue(int amount) {
+        this.value = MathHelper.clamp(this.value + amount, 0, MAX_ENERGY);
     }
 
     @Override
-    public int decrementValue(int amount) {
-        return this.value -= amount;
+    public boolean decrementValue(int amount) {
+        this.value = MathHelper.clamp(this.value - amount, 0, MAX_ENERGY);
+        if (this.value == 0) {
+            return false;
+        }
+        return true;
     }
 
     @Override

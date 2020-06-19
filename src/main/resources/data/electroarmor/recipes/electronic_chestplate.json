@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "PCP",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "electroarmor:iron_plate"
+    },
+    "C": {
+      "item": "electroarmor:circuit"
+    }
+  },
+  "result": {
+    "item": "electroarmor:electronic_chestplate"
+  }
+}

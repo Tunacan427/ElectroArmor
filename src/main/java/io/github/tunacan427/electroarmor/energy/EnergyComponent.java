@@ -4,7 +4,7 @@ import nerdhub.cardinal.components.api.component.Component;
 
 public interface EnergyComponent extends Component {
     int getValue();
-    int setValue(int value);
-    int incrementValue(int amount);
-    int decrementValue(int amount);
+    void setValue(int value);
+    void incrementValue(int amount);
+    boolean decrementValue(int amount);
 }

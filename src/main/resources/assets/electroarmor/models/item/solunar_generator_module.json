@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "electroarmor:item/solunar_generator_module"
-  }
-}

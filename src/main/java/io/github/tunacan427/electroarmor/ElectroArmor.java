@@ -6,7 +6,7 @@ import io.github.tunacan427.electroarmor.gui.ArmorInventoryDescription;
 import io.github.tunacan427.electroarmor.inventory.InventoryComponent;
 import io.github.tunacan427.electroarmor.inventory.InventoryComponentImpl;
 import io.github.tunacan427.electroarmor.item.ModItems;
-import io.github.tunacan427.electroarmor.item.module.ModuleItem;
+import io.github.tunacan427.electroarmor.item.upgrade.UpgradeItem;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import nerdhub.cardinal.components.api.ComponentRegistry;
@@ -28,6 +28,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
+
 public class ElectroArmor implements ModInitializer {
     public static final String MOD_ID = "electroarmor";
 
@@ -42,28 +44,36 @@ public class ElectroArmor implements ModInitializer {
     public static final ComponentType<InventoryComponent> ARMOR_INVENTORY =
             ComponentRegistry.INSTANCE.registerIfAbsent(id("armor_inventory"), InventoryComponent.class);
 
+    public static final Identifier ARMOR_INVENTORY_CONTAINER = id("armor_inventory");
+    public static final Identifier ARMOR_INVENTORY_PACKET = id("armor_inventory_packet");
+
     @Override
     public void onInitialize() {
         log(Level.INFO, "Initializing");
         AutoConfig.register(ElectroArmorConfig.class, GsonConfigSerializer::new);
+
         EntityComponentCallback.event(PlayerEntity.class).register((player, components) -> {
             components.put(ENERGY, new EnergyComponentImpl());
             components.put(ARMOR_INVENTORY, new InventoryComponentImpl());
-            ServerTickCallback.EVENT.register(ticks -> {
-                components.get(ARMOR_INVENTORY).getItems().forEach(stack -> {
-                    Item item = stack.getItem();
-                    if (item instanceof ModuleItem) {
-                        ((ModuleItem) item).tick(player);
-                    }
-                });
-            });
+            ServerTickCallback.EVENT.register(e -> Objects.requireNonNull(components.get(ARMOR_INVENTORY)).getItems().forEach(stack -> {
+                Item item = stack.getItem();
+                if (item instanceof UpgradeItem) {
+                    player.inventory.armor.forEach(armorPiece -> {
+                        if (armorPiece.getItem() == ((UpgradeItem) item).getArmorPiece())
+                            ((UpgradeItem) item).tick(player, player.getEntityWorld(), components.get(ENERGY));
+                    });
+                }
+            }));
         });
+
         EntityComponents.setRespawnCopyStrategy(ENERGY, RespawnCopyStrategy.INVENTORY);
-        ContainerProviderRegistry.INSTANCE.registerFactory(id("armor_inventory"), (syncId, id, player, buf)
+        EntityComponents.setRespawnCopyStrategy(ARMOR_INVENTORY, RespawnCopyStrategy.INVENTORY);
+
+        ContainerProviderRegistry.INSTANCE.registerFactory(ARMOR_INVENTORY_CONTAINER, (syncId, id, player, buf)
                 -> new ArmorInventoryDescription(syncId, player.inventory, ARMOR_INVENTORY.get(player).asInventory(), null));
         ModItems.registerItems();
-        ServerSidePacketRegistry.INSTANCE.register(id("armor_inventory_packet"), (packetContext, attachedData) -> packetContext.getTaskQueue().execute(() -> {
-            ContainerProviderRegistry.INSTANCE.openContainer(id("armor_inventory"), packetContext.getPlayer(), (packetByteBuf -> packetByteBuf.writeBlockPos(packetContext.getPlayer().getBlockPos())));
+        ServerSidePacketRegistry.INSTANCE.register(ARMOR_INVENTORY_PACKET, (packetContext, attachedData) -> packetContext.getTaskQueue().execute(() -> {
+            ContainerProviderRegistry.INSTANCE.openContainer(ARMOR_INVENTORY_CONTAINER, packetContext.getPlayer(), (packetByteBuf -> packetByteBuf.writeBlockPos(packetContext.getPlayer().getBlockPos())));
         }));
     }
 

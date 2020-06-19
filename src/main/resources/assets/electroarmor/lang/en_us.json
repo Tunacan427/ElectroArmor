@@ -3,7 +3,7 @@
 
   "item.electroarmor.iron_plate": "Iron Plate",
   "item.electroarmor.circuit": "Circuit",
-  "item.electroarmor.base_module": "Base Module",
+  "item.electroarmor.base_upgrade": "Upgrade Base",
   "item.electroarmor.hammer": "Hammer",
 
   "item.electroarmor.electronic_helmet": "Electronic Helmet",
@@ -11,21 +11,23 @@
   "item.electroarmor.electronic_leggings": "Electronic Leggings",
   "item.electroarmor.electronic_boots": "Electronic Boots",
 
-  "item.electroarmor.solar_generator_module_tier_1": "Solar Generator Module T1",
-  "item.electroarmor.solar_generator_module_tier_2": "Solar Generator Module T2",
-  "item.electroarmor.solar_generator_module_tier_3": "Solar Generator Module T3",
-  "item.electroarmor.lunar_generator_module_tier_1": "Lunar Generator Module T1",
-  "item.electroarmor.lunar_generator_module_tier_2": "Lunar Generator Module T2",
-  "item.electroarmor.lunar_generator_module_tier_3": "Lunar Generator Module T3",
-  "item.electroarmor.burnable_generator_module": "Burnable Generator Module",
-  "item.electroarmor.solunar_generator_module": "Solunar Generator Module",
-  "item.electroarmor.attacker_module_tier_1": "Attacker Module T1",
-  "item.electroarmor.attacker_module_tier_2": "Attacker Module T2",
-  "item.electroarmor.attacker_module_tier_3": "Attacker Module T3",
-  "item.electroarmor.mining_module_tier_1": "Mining Module T1",
-  "item.electroarmor.mining_module_tier_2": "Mining Module T2",
-  "item.electroarmor.feeding_module": "Feeding Module",
-  "item.electroarmor.speed_module": "Speed Module",
+  "item.electroarmor.solar_generator_upgrade_tier_1": "Solar Generator Upgrade T1",
+  "item.electroarmor.solar_generator_upgrade_tier_2": "Solar Generator Upgrade T2",
+  "item.electroarmor.solar_generator_upgrade_tier_3": "Solar Generator Upgrade T3",
+  "item.electroarmor.lunar_generator_upgrade_tier_1": "Lunar Generator Upgrade T1",
+  "item.electroarmor.lunar_generator_upgrade_tier_2": "Lunar Generator Upgrade T2",
+  "item.electroarmor.lunar_generator_upgrade_tier_3": "Lunar Generator Upgrade T3",
+  "item.electroarmor.burnable_generator_upgrade": "Burnable Generator Upgrade",
+  "item.electroarmor.solunar_generator_upgrade": "Solunar Generator Upgrade",
+  "item.electroarmor.attacker_upgrade_tier_1": "Attacker Upgrade T1",
+  "item.electroarmor.attacker_upgrade_tier_2": "Attacker Upgrade T2",
+  "item.electroarmor.attacker_upgrade_tier_3": "Attacker Upgrade T3",
+  "item.electroarmor.mining_upgrade_tier_1": "Mining Upgrade T1",
+  "item.electroarmor.mining_upgrade_tier_2": "Mining Upgrade T2",
+  "item.electroarmor.feeding_upgrade": "Feeding Upgrade",
+  "item.electroarmor.speed_upgrade": "Speed Upgrade",
 
-  "text.autoconfig.electroarmor.title": "Electro Armor Config"
+  "text.autoconfig.electroarmor.title": "Electro Armor Config",
+  "text.electroarmor.energyStatus": "Armor Energy: ",
+  "container.electroarmor.armorInventory": "Electro Armor Upgrades"
 }

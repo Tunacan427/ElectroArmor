@@ -3,6 +3,7 @@
   "package": "io.github.tunacan427.electroarmor.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "PlayerEntityMixin"
   ],
   "client": [
   ],

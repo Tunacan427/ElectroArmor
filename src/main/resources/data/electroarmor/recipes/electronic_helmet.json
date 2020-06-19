@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CPC",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "electroarmor:iron_plate"
+    },
+    "C": {
+      "item": "electroarmor:circuit"
+    }
+  },
+  "result": {
+    "item": "electroarmor:electronic_helmet"
+  }
+}

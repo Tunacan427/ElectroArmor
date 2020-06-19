@@ -1,9 +1,10 @@
 package io.github.tunacan427.electroarmor.inventory;
 
-import io.github.tunacan427.electroarmor.item.module.LunarGeneratorModule;
-import io.github.tunacan427.electroarmor.item.module.ModuleItem;
-import io.github.tunacan427.electroarmor.item.module.SolarGeneratorModule;
-import io.github.tunacan427.electroarmor.item.module.SolunarGeneratorModule;
+import io.github.tunacan427.electroarmor.item.ModItems;
+import io.github.tunacan427.electroarmor.item.upgrade.LunarGeneratorUpgrade;
+import io.github.tunacan427.electroarmor.item.upgrade.SolarGeneratorUpgrade;
+import io.github.tunacan427.electroarmor.item.upgrade.SolunarGeneratorUpgrade;
+import io.github.tunacan427.electroarmor.item.upgrade.UpgradeItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
@@ -114,11 +115,11 @@ public interface ImplementedInventory extends Inventory {
     @Override
     default boolean isValid(int slot, ItemStack stack) {
         Item targetItem = stack.getItem();
-        if (stack.getItem() instanceof ModuleItem) {
+        if (stack.getItem() instanceof UpgradeItem) {
             for (ItemStack itemStack : getItems()) {
                 Item item = itemStack.getItem();
-                if (targetItem instanceof SolarGeneratorModule || targetItem instanceof LunarGeneratorModule || targetItem instanceof SolunarGeneratorModule) {
-                    if (item instanceof SolarGeneratorModule || item instanceof LunarGeneratorModule || item instanceof SolunarGeneratorModule) {
+                if (targetItem instanceof SolarGeneratorUpgrade || targetItem instanceof LunarGeneratorUpgrade || targetItem instanceof SolunarGeneratorUpgrade) {
+                    if (item instanceof SolarGeneratorUpgrade || item instanceof LunarGeneratorUpgrade || item instanceof SolunarGeneratorUpgrade) {
                         return false;
                     }
                 }
@@ -126,7 +127,15 @@ public interface ImplementedInventory extends Inventory {
                     return false;
                 }
             }
-            return true;
+            if ((slot == 0 || slot == 1) && ((UpgradeItem) targetItem).getArmorPiece() == ModItems.ELECTRONIC_HELMET)
+                return true;
+            if ((slot == 2 || slot == 3) && ((UpgradeItem) targetItem).getArmorPiece() == ModItems.ELECTRONIC_CHESTPLATE)
+                return true;
+            if ((slot == 4 || slot == 5) && ((UpgradeItem) targetItem).getArmorPiece() == ModItems.ELECTRONIC_LEGGINGS)
+                return true;
+            if ((slot == 6 || slot == 7) && ((UpgradeItem) targetItem).getArmorPiece() == ModItems.ELECTRONIC_BOOTS)
+                return true;
+            return false;
         }
         return false;
     }

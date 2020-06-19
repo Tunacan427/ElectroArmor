@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "electroarmor:item/solar_generator_upgrade_tier_3"
+  }
+}
